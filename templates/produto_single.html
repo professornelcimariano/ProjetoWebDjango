@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.pro_name }}</title>
+</head>
+
+<body>
+    {% include 'menu.html' %}
+
+    <h2>
+        {{ product.pro_name }}
+    </h2>
+
+    <p>
+        R$ {{ product.pro_price|floatformat:2 }}
+    </p>
+
+    <p>
+        Estoque: {{ product.pro_stock }}
+    </p>
+
+    <p>
+        Categoria: {{ product.pro_category }}
+    </p>
+
+    <hr>
+
+   
+</body>
+
+</html>
