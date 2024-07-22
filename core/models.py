@@ -72,6 +72,7 @@ class Blog(models.Model):
             self.slug = slug
         super().save(*args, **kwargs)
     
+    #mini_image para retornar a imagem em miniatura no painel admin
     def mini_image(self):
         if self.blo_image:
             return format_html('<img src="{}" style="height: 100px; width: auto;" />', self.blo_image.url)
