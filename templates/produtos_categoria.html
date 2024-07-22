@@ -1,38 +1,27 @@
+{% extends '_main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<h2>
+    Python - Produtos
+</h2>
+{{ categories }}
+<!-- Filtragem por categoria -->
+<ul>
 
-<body>
+    {% for cat in category %}
+    <li><a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ category.cat_name }}</a></li>
+    {% endfor %}
+</ul>
+<!-- Listagem de produtos -->
+<ul>
+    {% for pro in product %}
+    <li>{{ pro.pro_name }} - {{ pro.pro_category.cat_name }}</li>
+    <p>Preço: R$ {{ pro.pro_price }}</p>
+    <p>Quantidade em Estoque: {{ pro.pro_stock }}</p>
+    {% empty %}
+    <li>Nenhum produto encontrado.</li>
+    {% endfor %}
+</ul>
 
-    {% include 'menu.html' %}
-
-    <h2>
-        Python - Produtos
-    </h2>
-    {{ categories }}
-    <!-- Filtragem por categoria -->
-    <ul>
-        
-        {% for category in categories %}
-            <li><a href="{% url 'produtos_categoria' cat_name=category.cat_name %}">{{ category.cat_name }}</a></li>
-        {% endfor %}
-    </ul>
-    <!-- Listagem de produtos -->
-    <ul>
-        {% for product in products %}
-        <li>{{ product.pro_name }} - {{ product.pro_category.cat_name }}</li>
-        <p>Preço: R$ {{ product.pro_price }}</p>
-        <p>Quantidade em Estoque: {{ product.pro_stock }}</p>
-        {% empty %}
-        <li>Nenhum produto encontrado.</li>
-        {% endfor %}
-    </ul>
-</body>
-
-</html>
+{% endblock %}

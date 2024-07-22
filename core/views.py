@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from core.models import Products, Blogs, Category
+from core.models import Product, Blog, CategoryProduct
 # Create your views here.
 # Funções com as Rotas 
 # - Função index faz a requisição no arquivo index.html
@@ -8,6 +8,7 @@ def index(request):
     context = {
         'courses': 'Programação de Computadores no SENAC GUA',
         'languages': ['Python', 'Java', 'C#', 'JavaScript'],
+        'title': 'Projeto Django',
         'news': [
             {
                 'title': 'Nova versão do Django lançada!',
@@ -18,11 +19,6 @@ def index(request):
                 'title': 'Python é a linguagem do futuro',
                 'subtitle': 'Especialistas afirmam que Python está dominando o mercado',
                 'text': 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
-            },
-            {
-                'title': 'JavaScript: O que esperar do ES10?',
-                'subtitle': 'Novas funcionalidades e melhorias na performance',
-                'text': 'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
             }
         ]
     }
@@ -32,39 +28,41 @@ def contato(request):
     return render(request, 'contato.html')
 
 def produtos(request):
-    product = Products.objects.all() # Products.objects.all() -> Usado para recuperar todos os objetos de um modelo (Dados de uma tabela).
-    categories = Category.objects.all()  # Para exibir todas as categorias no template
+    product = Product.objects.all() # Products.objects.all() -> Usado para recuperar todos os objetos de um modelo (Dados de uma tabela).
+    category = CategoryProduct.objects.all()  # Para exibir todas as categorias no template
 
     data = {
-        'products': product,
-        'categories': categories
+        'product': product,
+        'category': category
     }
     return render(request, 'produtos.html', data)
 
 def produto_single(request, id):
-    product = get_object_or_404(Products, id=id) # get_object_or_404(Products, id=id) -> Usado para recuperar um único objeto com base em um critério específico, como um ID único.
+    product = get_object_or_404(Product, id=id) # get_object_or_404(Products, id=id) -> Usado para recuperar um único objeto com base em um critério específico, como um ID único.
     return render(request, 'produto_single.html', {'product': product})  
 
+
 def blogs(request):
-    blog = Blogs.objects.all()
+    blog = Blog.objects.all()
 
     data = {
-        'blogs': blog,
+        'blog': blog,
+        'title': 'Blog Django'
     }
     return render(request, 'blogs.html', data)
 
 #Página single do blog com slug, url amigável
 def blog_single(request, slug):
-    blog = get_object_or_404(Blogs, slug=slug)
+    blog = get_object_or_404(Blog, slug=slug)
     return render(request, 'blog_single.html', {'blog': blog})  
 
 def produtos_categoria(request, cat_name=None):
-    products = Products.objects.all()
+    product = Product.objects.all()
 
     if cat_name:
-        category = get_object_or_404(Category, cat_name=cat_name)
-        products = products.filter(pro_category=category)
+        category = get_object_or_404(CategoryProduct, cat_name=cat_name)
+        product = Product.filter(pro_category=category)
 
-    categories = Category.objects.all()  # Para exibir todas as categorias no template
+    category = CategoryProduct.objects.all()  # Para exibir todas as categorias no template
 
-    return render(request, 'produtos_categoria.html', {'products': products, 'categories': categories})
+    return render(request, 'produtos_categoria.html', {'products': product, 'category': category})

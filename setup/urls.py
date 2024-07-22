@@ -20,6 +20,8 @@ from django.urls import path, include
 #Imports abaixo para as imagens - Faça também a instalação do Pillow - pip install Pillow
 from django.conf import settings
 from django.conf.urls.static import static
+#tinymce
+from tinymce import urls as tinymce_urls
 
 #import das views, função index e contato criadas no core/views
 from core.views import index, contato
@@ -27,6 +29,7 @@ from core.views import index, contato
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('tinymce/', include(tinymce_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #Configuração acima para cadastro de imagens -> + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

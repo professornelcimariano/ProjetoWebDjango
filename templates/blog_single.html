@@ -1,38 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends '_main.html' %}
+{% load static %}
+{% block content %}
+<h1>
+    {{ blog.blo_title }}
+</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ blog.blo_title }}</title>
-</head>
+<h2>
+    {{ blog.blo_subtitle }}
+</h2>
 
-<body>
-    {% include 'menu.html' %}
+<p>
+    {{ blog.blo_description }}
+</p>
 
-    <h1>
-        {{ blog.blo_title }}
-    </h1>
+<p>
+    {{ blog.slug }}
+</p>
 
-    <h2>
-        {{ blog.blo_subtitle }}
-    </h2>
+{% if blog.blo_image %}
+<img src="{{ blog.blo_image.url }}" alt="{{ blog.blo_title }}" width="500">
+{% endif %}
 
-    <p>
-        {{ blog.blo_description }}
-    </p>
-
-    <p>
-        {{ blog.slug }}
-    </p>
-    
-    {% if blog.blo_image %}
-    <img src="{{ blog.blo_image.url }}" alt="{{ blog.blo_title }}" width="600">
-    {% endif %}
-
-    <hr>
-
-
-</body>
-
-</html>
+{% endblock %}

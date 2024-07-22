@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
+    'tinymce',
     'core',
 ]
 
@@ -132,16 +134,32 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #Configuração para cadastro de imagens na raiz do projeto
 #opção 1
-'''
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-STATICFILES_DIRS = [BASE_DIR / 'core/static']
+
 '''
 #opção 2 - Inserir as imagens cadastradas no admin dentro do app core/static/images
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'core/static')
+'''
+'''
+"MEDIA_URL" e "MEDIA_ROOT" são configurações usadas para gerenciar arquivos de mídia, como imagens e documentos, que os usuários fazem upload para o seu site.
+"MEDIA_URL": Define a URL base através da qual os arquivos de mídia podem ser acessados no navegador. No seu exemplo, MEDIA_URL = '/media/' significa que os arquivos de mídia podem ser acessados através de URLs que começam com /media/. Por exemplo, se um arquivo chamado image.jpg for carregado, ele pode ser acessado via http://example.com/media/image.jpg.
+"MEDIA_ROOT": Define o caminho absoluto no sistema de arquivos onde os arquivos de mídia serão armazenados. No seu exemplo, MEDIA_ROOT = os.path.join(BASE_DIR, 'core/static') define o diretório no sistema de arquivos onde os arquivos de mídia são armazenados. O BASE_DIR é a raiz do seu projeto Django, então MEDIA_ROOT está apontando para um diretório chamado static dentro de um diretório core.
+'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 700,  # Altere a altura conforme necessário
+    'width': '100%',   # Altere a largura conforme necessário
+    'plugins': 'textcolor link image lists code',
+    'toolbar': 'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help',
+}

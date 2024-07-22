@@ -1,43 +1,32 @@
+{% extends '_main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block content %}
+<h2>
+    Python - Produtos
+</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    {% include 'menu.html' %}
-
-    <h2>
-        Python - Produtos
-    </h2>
-
-    {{ categories }}
-    <!-- Filtragem por categoria -->
+<!-- {{ category }} -->
+<!-- Filtragem por categoria -->
 
 
-    {% for category in categories %}
-    <p>
-        <a href="{% url 'produtos_categoria' cat_name=category.cat_name %}">{{ category.cat_name }}</a></li>
-    </p>
-    {% endfor %}
+{% for cat in category %}
+<p>
+    <a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
+</p>
+{% endfor %}
 
 
-    <hr>
+<hr>
 
-    <p>
-        {{ products }}
-    </p>
+<p>
+    <!-- {{ product }} -->
+</p>
 
-    {% for p in products %}
-    <p>
-        <a href="{% url 'produto_single' p.id %}">{{ p }}</a>
-    </p>
-    {% endfor %}
-</body>
+{% for p in product %}
+<p>
+    <a href="{% url 'produto_single' p.id %}">{{ p }}</a>
+</p>
+{% endfor %}
 
-</html>
+
+{% endblock %}

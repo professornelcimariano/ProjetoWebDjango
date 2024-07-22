@@ -1,0 +1,43 @@
+{% load static %}
+<!-- <footer>
+    <p>&copy; {{ now|date:"Y" }} Projeto Web Django - by Professor Nelci Mariano</p>
+</footer> -->
+
+{% load static %}
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Sobre</h3>
+            <p>
+                Aprenda a criar aplicações web robustas com Python e Django, cobrindo desde os fundamentos da linguagem
+                até o desenvolvimento completo de projetos web
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Links Rápidos</h3>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'contato' %}">Contato</a></li>
+                <li><a href="{% url 'produtos' %}">Produtos</a></li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Redes Sociais</h3>
+            <a href="#" class="social-icon"> <i class="bi bi-facebook"></i> </a>
+            <a href="#" class="social-icon"> <i class="bi bi-instagram"></i> </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; {% now "Y" %} - Projeto Web Django. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+
+
+</body>
+<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap5/js/bootstrap.min.js' %}"></script>
+<!-- {% load django_bootstrap5 %}
+{% bootstrap_javascript %} -->
+
+</html>

@@ -1,34 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends '_main.html' %}
+{% load static %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.pro_name }}</title>
-</head>
+<h2>
+    {{ product.pro_name }}
+</h2>
 
-<body>
-    {% include 'menu.html' %}
+<p>
+    R$ {{ product.pro_price|floatformat:2 }}
+</p>
 
-    <h2>
-        {{ product.pro_name }}
-    </h2>
+<p>
+    Estoque: {{ product.pro_stock }}
+</p>
 
-    <p>
-        R$ {{ product.pro_price|floatformat:2 }}
-    </p>
+<p>
+    Categoria: {{ product.pro_category }}
+</p>
 
-    <p>
-        Estoque: {{ product.pro_stock }}
-    </p>
+<hr>
 
-    <p>
-        Categoria: {{ product.pro_category }}
-    </p>
-
-    <hr>
-
-   
-</body>
-
-</html>
+{% endblock %}
