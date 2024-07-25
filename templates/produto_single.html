@@ -1,22 +1,22 @@
 {% extends '_main.html' %}
 {% block content %}
+<div class="container">
+    <h2>
+        {{ product.pro_name }}
+    </h2>
 
-<h2>
-    {{ product.pro_name }}
-</h2>
+    <p>
+        R$ {{ product.pro_price|floatformat:2 }}
+    </p>
 
-<p>
-    R$ {{ product.pro_price|floatformat:2 }}
-</p>
+    <p>
+        Estoque: {{ product.pro_stock }}
+    </p>
 
-<p>
-    Estoque: {{ product.pro_stock }}
-</p>
+    <p>
+        Categoria: {{ product.pro_category }}
+    </p>
 
-<p>
-    Categoria: {{ product.pro_category }}
-</p>
-
-<hr>
-
+    <hr>
+</div>
 {% endblock %}

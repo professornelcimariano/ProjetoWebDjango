@@ -1,24 +1,25 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
-<h1>
-    {{ blog.blo_title }}
-</h1>
+<div class="container">
+    <h1>
+        {{ blog.blo_title }}
+    </h1>
 
-<h2>
-    {{ blog.blo_subtitle }}
-</h2>
+    <h2>
+        {{ blog.blo_subtitle }}
+    </h2>
 
-<p>
-    {{ blog.blo_description }}
-</p>
+    <p>
+        {{ blog.blo_description|safe }}
+    </p>
 
-<p>
-    {{ blog.slug }}
-</p>
+    <p>
+        {{ blog.slug }}
+    </p>
 
-{% if blog.blo_image %}
-<img src="{{ blog.blo_image.url }}" alt="{{ blog.blo_title }}" width="500">
-{% endif %}
-
+    {% if blog.blo_image %}
+    <img src="{{ blog.blo_image.url }}" alt="{{ blog.blo_title }}" width="500">
+    {% endif %}
+</div>
 {% endblock %}

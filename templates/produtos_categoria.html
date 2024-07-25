@@ -5,12 +5,12 @@
 <h2>
     Python - Produtos
 </h2>
-{{ categories }}
+<!-- {{ category }} -->
 <!-- Filtragem por categoria -->
 <ul>
 
     {% for cat in category %}
-    <li><a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ category.cat_name }}</a></li>
+    <li><a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
     {% endfor %}
 </ul>
 <!-- Listagem de produtos -->

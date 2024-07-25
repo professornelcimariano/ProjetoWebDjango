@@ -1,23 +1,24 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
-<h2>
-    Python - Blog
-</h2>
+<div class="container">
+    <h2>
+        Python - Blog
+    </h2>
 
-<p>
-    <!-- {{ blog }} -->
-</p>
+    <p>
+        <!-- {{ blog }} -->
+    </p>
 
-{% for b in blog %}
-<p>
-    <a href="{% url 'blog_single' b.slug %}">{{ b }}</a>
-</p>
+    {% for b in blog %}
+    <p>
+        <a href="{% url 'blog_single' b.slug %}">{{ b }}</a>
+    </p>
 
-{% if b.blo_image %}
+    {% if b.blo_image %}
     <img src="{{ b.blo_image.url }}" alt="{{ blog.blo_title }}" width="100">
-{% endif %}
+    {% endif %}
 
-{% endfor %}
-
+    {% endfor %}
+</div>
 {% endblock %}

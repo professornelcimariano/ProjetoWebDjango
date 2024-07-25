@@ -23,9 +23,6 @@ from django.conf.urls.static import static
 #tinymce
 from tinymce import urls as tinymce_urls
 
-#import das views, função index e contato criadas no core/views
-from core.views import index, contato
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),

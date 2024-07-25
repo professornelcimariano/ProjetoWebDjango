@@ -48,7 +48,7 @@ class Product(models.Model):
 class Blog(models.Model):
     blo_title = models.CharField('Título', max_length=100)
     blo_subtitle = models.CharField('Sub-Título', max_length=100, blank=True, null=True)
-    # blo_description = models.TextField('Texto do Blog')
+    #blo_description = models.TextField('Texto do Blog')
     blo_description = HTMLField('Texto do Blog')
     blo_image = models.ImageField('Imagem de Capa', upload_to='images/blog', blank=True, null=True)
     # image = models.ImageField(upload_to='images/', default='images/default.jpg')
@@ -57,7 +57,7 @@ class Blog(models.Model):
     '''
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.blo_title)
         super().save(*args, **kwargs)
     '''
     #Abaixo o slug possui a função de adicionar um sufixo caso já exista com o mesmo nome

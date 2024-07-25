@@ -1,23 +1,26 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
-<h2>
-    Python - Produtos
-</h2>
-<!-- {{ category }} -->
-<!-- Filtragem por categoria -->
-{% for cat in category %}
-<p>
-    <a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
-</p>
-{% endfor %}
-<hr>
-<p>
-    <!-- {{ product }} -->
-</p>
-{% for p in product %}
-<p>
-    <a href="{% url 'produto_single' p.id %}">{{ p }}</a>
-</p>
-{% endfor %}
+
+<div class="container">
+    <h2>
+        Python - Produtos
+    </h2>
+    <!-- {{ category }} -->
+    <!-- Filtragem por categoria -->
+    {% for cat in category %}
+    <p>
+        <a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
+    </p>
+    {% endfor %}
+    <hr>
+    <p>
+        <!-- {{ product }} -->
+    </p>
+    {% for p in product %}
+    <p>
+        <a href="{% url 'produto_single' p.id %}">{{ p.pro_name }}</a>
+    </p>
+    {% endfor %}
+</div>
 {% endblock %}

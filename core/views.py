@@ -25,7 +25,7 @@ def index(request):
     return render(request, 'index.html', context)
     
 def contato(request):
-    return render(request, 'contato.html')
+    return render(request, 'contato.html', {'title': 'Contato Site'})
 
 def produtos(request):
     product = Product.objects.all() # Products.objects.all() -> Usado para recuperar todos os objetos de um modelo (Dados de uma tabela).
@@ -61,8 +61,8 @@ def produtos_categoria(request, cat_name=None):
 
     if cat_name:
         category = get_object_or_404(CategoryProduct, cat_name=cat_name)
-        product = Product.filter(pro_category=category)
+        product = Product.objects.filter(pro_category=category)
 
     category = CategoryProduct.objects.all()  # Para exibir todas as categorias no template
 
-    return render(request, 'produtos_categoria.html', {'products': product, 'category': category})
+    return render(request, 'produtos_categoria.html', {'product': product, 'category': category})
