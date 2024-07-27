@@ -2,13 +2,36 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Footer Styling */
+.navbar {
+    padding: 15px 0; /* Espaçamento interno da barra de navegação */
+}
+
+.nav-link {
+    color: #ecf0f1; /* Cor do texto dos links */
+    font-weight: 500; /* Peso da fonte */
+    transition: color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.nav-link:hover {
+    color: #1abc9c !important; 
+    text-decoration: underline; 
+}
+
+
+h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif;}
+h1 { margin-top: 20px !important; }
+li, p { font-size: 1.5em; }
+
+.conteinerFlex { display: flex; flex-wrap: wrap; justify-content: center; align-items: center;}
+.itemFlex50 { width: 48%; margin: 1% }
+
 .footer {
     background-color: #222;
     color: #ecf0f1;
-    padding: 20px 10%;
+    padding: 40px 10%;
     font-family: Arial, sans-serif;
     margin-top: 20px;
+    border-top: 2px solid #ecf0f1;
 }
 
 .footer-container {
@@ -21,45 +44,91 @@ body {
     flex: 1;
     margin: 10px;
     min-width: 200px;
+    max-width: 300px;
 }
 
 .footer-section h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 5px;
 }
 
 .footer-section p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
 }
 
 .footer-section ul {
-    list-style-type: none;
+    list-style-type: none; /* Remove marcadores padrão */
     padding: 0;
 }
 
+.footer-section.links ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 14px; /* Tamanho da fonte */
+}
+
+.footer-section.links ul li::before {
+    content: '→'; /* Marcador personalizado */
+    margin-right: 8px; /* Espaço entre o marcador e o texto */
+    color: #ecf0f1; /* Cor do marcador */
+    font-size: 16px; /* Tamanho do marcador */
+}
+
+.footer-section.links ul li a {
+    color: #ecf0f1; /* Cor neutra para os links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+    color: #1abc9c; /* Cor ao passar o mouse */
+    text-decoration: underline;
+}
+
 .footer-section ul li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 14px; /* Ajuste para o tamanho da fonte */
+}
+
+.footer-section ul li i {
+    margin-right: 8px;
+    font-size: 16px; /* Tamanho do ícone */
+    color: #1abc9c; /* Cor dos ícones */
 }
 
 .footer-section ul li a {
-    color: #ecf0f1;
+    color: #ecf0f1; /* Cor neutra para os links */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
+    color: #1abc9c; /* Cor ao passar o mouse */
     text-decoration: underline;
 }
 
 .social-icon {
     display: inline-block;
-    margin-right: 10px;
-    font-size: 35px;
-    color: #fff
+    margin-right: 15px;
+    font-size: 30px;
+    color: #1abc9c; /* Cor dos ícones sociais */
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
 }
 
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
+    border-top: 1px solid #ecf0f1;
+    padding-top: 15px;
 }

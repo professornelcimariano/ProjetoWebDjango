@@ -3,7 +3,7 @@ from django.contrib import admin
 from .forms import BlogAdminForm
 
 # Register your models here.
-from .models import Product, Blog, Client, CategoryProduct
+from .models import Product, Blog, Client, CategoryProduct, CategoryCar, Carros
 
 admin.site.register(Product)
 
@@ -24,3 +24,14 @@ class Client(admin.ModelAdmin):
 class CategoryProduct(admin.ModelAdmin):
     list_display = ['cat_name']
     search_fields = ['cat_name']
+
+#admin.site.register(CategoryCar)
+@admin.register(CategoryCar)
+class CategoryCar(admin.ModelAdmin):
+    list_display = ['catcar_name']
+    search_fields = ['catcar_name']
+
+@admin.register(Carros)
+class Carros(admin.ModelAdmin):
+    list_display = ['car_name', 'mini_image']
+    search_fields = ['car_name']

@@ -11,14 +11,34 @@ def index(request):
         'title': 'Projeto Django',
         'news': [
             {
+                'id':1,
                 'title': 'Nova versão do Django lançada!',
                 'subtitle': 'Confira as novidades da versão 3.0',
                 'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero ut imperdiet vehicula.'
             },
             {
+                'id':2,
                 'title': 'Python é a linguagem do futuro',
                 'subtitle': 'Especialistas afirmam que Python está dominando o mercado',
                 'text': 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
+            },
+            {
+                'id':3,
+                'title': 'Transforme Desafios em Oportunidades com Python',
+                'subtitle': 'Com Python, você terá as habilidades necessárias para enfrentar e superar qualquer desafio tecnológico que surgir em seu caminho.',
+                'text': 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
+            },
+            {
+                'id':4,
+                'title': 'Python: O Caminho para um Mundo Digital',
+                'subtitle': 'Vastas possibilidades que Python oferece e posicione-se na vanguarda da transformação digital e da inovação tecnológica',
+                'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero ut imperdiet vehicula et malesuada fames ac turpis egestas.'
+            },
+            {
+                'id':5,
+                'title': 'Descubra o Poder do Código com Python',
+                'subtitle': 'Aprender Python é investir no seu futuro; prepare-se para explorar novas áreas, conquistar desafios e alcançar seus objetivos profissionais.',
+                'text': 'Pellentesque habitant morbi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero ut imperdiet vehicula.'
             }
         ]
     }
@@ -33,7 +53,8 @@ def produtos(request):
 
     data = {
         'product': product,
-        'category': category
+        'category': category,
+        'title' : 'Produtos Django'
     }
     return render(request, 'produtos.html', data)
 
