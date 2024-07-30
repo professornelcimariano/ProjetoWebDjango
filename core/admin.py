@@ -14,7 +14,7 @@ admin.site.register(Product)
 @admin.register(Blog)
 class Blog(admin.ModelAdmin):
     form = BlogAdminForm # Estilização do Form Blog do Admin
-    list_display = ['mini_image', 'title']
+    list_display = ['title',  'mini_image' ]
     search_fields = ['title']
 
 @admin.register(Client)

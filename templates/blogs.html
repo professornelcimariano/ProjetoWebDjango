@@ -1,24 +1,104 @@
 {% extends '_main.html' %}
+{% load static %}
 {% block content %}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="m-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item fs-6"><a href="{% url 'index' %}" class="text-decoration-none text-custom">Home</a></li>
+        <li class="breadcrumb-item active fs-6 text-dark" aria-current="page">Blog</li>
+    </ol>
+</nav>
+
+<!-- Title without Background -->
+<div class="container mt-5">
+    <h2 class="mb-4">Blog</h2>
+    <hr class="my-4 border-custom">
+
+    <!-- Exemplo de uso de cards para listagem dos blogs -->
+    <div class="row">
+        {% for b in blog %}
+        <div class="col-md-12 mb-4">
+            <div class="card h-100 d-flex flex-md-row border-0">
+                {% if b.image %}
+                <div class="col-md-4 p-0">
+                    <img src="{{ b.image.url }}" class="card-img-top" alt="{{ b.title }}">
+                </div>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title mb-3">
+                        {{ b.title|slice:":100" }}{% if b.title|length > 100 %}...{% endif %}
+                    </h3>
+                    <hr class="my-2 border-custom">
+                    <p class="card-text mb-4">
+                        {{ b.subtitle|slice:":200" }}{% if b.subtitle|length > 200 %}...{% endif %}
+                    </p>
+                    <a href="{% url 'blog_single' b.slug %}" class="btn btn-custom mt-auto">Leia mais</a>
+                </div>
+                {% if not b.image %}
+                <div class="col-md-12 d-none d-md-block"></div>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        {% empty %}
+        <p class="text-muted">Nenhum blog encontrado.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Custom CSS to apply the color and background -->
+<style>
+    .text-custom {
+        color: #1abc9c; /* Custom color for text */
+    }
+    .border-custom {
+        border-color: #1abc9c !important; /* Custom color for hr */
+    }
+    .btn-custom {
+        color: #fff;
+        background-color: #1abc9c;
+        border-color: #1abc9c;
+        border-radius: 0.25rem; /* Rounded corners */
+        padding: 0.375rem 0.75rem; /* Smaller padding */
+        font-size: 0.875rem; /* Smaller font size */
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    .btn-custom:hover {
+        background-color: #149b82;
+        border-color: #149b82;
+    }
+    .card-title {
+        font-size: 1.5rem; /* Increased font size for title */
+    }
+    .card-text {
+        font-size: 0.875rem; /* Font size for subtitle */
+    }
+    .card-img-top {
+        object-fit: cover; /* Ensures image covers the area without distortion */
+        width: 100%;
+        height: 100%;
+    }
+    .card-body {
+        flex: 1;
+    }
+</style>
+
+{% endblock %}
+
+
+<!-- 
 <div class="container">
     <h2>
         Python - Blog
     </h2>
-
-    <p>
-        <!-- {{ blog }} -->
-    </p>
-
     {% for b in blog %}
     <p>
         <a href="{% url 'blog_single' b.slug %}">{{ b }}</a>
     </p>
-
     {% if b.image %}
     <img src="{{ b.image.url }}" alt="{{ blog.title }}" width="100">
     {% endif %}
-
     {% endfor %}
 </div>
-
-{% endblock %}
+ -->

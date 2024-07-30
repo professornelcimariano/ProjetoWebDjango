@@ -6,6 +6,6 @@ class BlogAdminForm(forms.ModelForm):
         model = Blog
         fields = '__all__'
         widgets = {
-            'blo_title': forms.TextInput(attrs={'style': 'width: 80%;'}),
-            'blo_subtitle': forms.TextInput(attrs={'style': 'width: 80%;'})            
+            'title': forms.TextInput(attrs={'style': 'width: 80%;'}),
+            'subtitle': forms.TextInput(attrs={'style': 'width: 80%;'})            
         }

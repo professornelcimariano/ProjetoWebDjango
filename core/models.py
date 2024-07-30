@@ -106,8 +106,8 @@ class Blog(models.Model):
     
     #mini_image para retornar a imagem em miniatura no painel admin
     def mini_image(self):
-        if self.blo_image:
-            return format_html('<img src="{}" style="height: 100px; width: auto;" />', self.blo_image.url)
+        if self.image:
+            return format_html('<img src="{}" style="height: 100px; width: auto;" />', self.image.url)
         return " "
     mini_image.short_description = 'Imagem de Capa'
 

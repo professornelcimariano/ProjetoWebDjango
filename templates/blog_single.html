@@ -1,25 +1,79 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
+
+<div class="container-fluid px-0">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="m-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item fs-6"><a href="{% url 'blogs' %}" class="text-decoration-none text-custom">Blogs</a></li>
+            <li class="breadcrumb-item active fs-6 text-dark" aria-current="page">{{ blog.title|slice:":20" }}{% if blog.title|length > 20 %}...{% endif %}</li>
+        </ol>
+    </nav>
+
+    <!-- Title and Subtitle with Background -->
+    <div class="bg-dark text-white text-center py-5 mb-4">
+        <div class="container">
+            <h1 class="display-3 text-custom">{{ blog.title }}</h1>
+            <hr class="my-4 border-custom">
+            <h2 class="text-light fs-4 text-custom">{{ blog.subtitle }}</h2>
+        </div>
+    </div>
+
+    <!-- Main Blog Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <!-- Blog Image -->
+                {% if blog.image %}
+                <div class="text-center mb-4">
+                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid rounded shadow-sm">
+                </div>
+                {% endif %}
+
+                <!-- Blog Description -->
+                <div class="mb-4">
+                    <p class="fs-5">{{ blog.description|safe }}</p>
+                </div>
+
+                <!-- Blog Slug -->
+                <div class="text-center mt-4">
+                    <p class="text-muted">Slug: <span class="text-primary">{{ blog.slug }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS to apply the color and background -->
+<style>
+    .bg-dark {
+        background-color: #333; /* Dark background for the title section */
+    }
+    .text-custom {
+        color: #1abc9c; /* Custom color for text */
+    }
+    .border-custom {
+        border-color: #1abc9c !important; /* Custom color for hr */
+    }
+</style>
+
+{% endblock %}
+
+<!-- <div class="container">
     <h1>
         {{ blog.title }}
     </h1>
-
     <h2>
         {{ blog.subtitle }}
     </h2>
-
     <p>
         {{ blog.description|safe }}
     </p>
-
     <p>
         {{ blog.slug }}
     </p>
-
     {% if blog.image %}
     <img src="{{ blog.image.url }}" alt="{{ blog.title }}" width="500">
     {% endif %}
-</div>
-{% endblock %}
+</div> -->

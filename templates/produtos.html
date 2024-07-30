@@ -2,26 +2,112 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-    <h2>
-        Python - Produtos
-    </h2>
-    <!-- {{ category }} -->
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="m-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item fs-6"><a href="{% url 'index' %}" class="text-decoration-none text-custom">Home</a></li>
+        <li class="breadcrumb-item active fs-6 text-dark" aria-current="page">Produtos</li>
+    </ol>
+</nav>
+
+<!-- Title without Background -->
+<div class="container mt-5">
+    <h2 class="mb-4">Produtos</h2>
+
     <!-- Filtragem por categoria -->
+    <div class="mb-4">
+        <h5>Categorias</h5>
+        <div class="d-flex flex-wrap">
+            {% for c in category %}
+            <a href="{% url 'produtos_categoria' c.name %}" class="btn btn-outline-custom me-2 mb-2">{{ c.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr class="my-4 border-custom">
+
+    <!-- Produtos -->
+    <div class="row">
+        {% for p in product %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if p.image %}
+                <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.name }}">
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <a href="{% url 'produto_single' p.id %}" class="text-decoration-none text-dark">{{ p.name }}</a>
+                    </h5>
+                    <p class="card-text">
+                        {{ p.description|slice:":150"|safe }}{% if p.description|length > 150 %}...{% endif %}
+                    </p>
+                    <a href="{% url 'produto_single' p.id %}" class="btn btn-custom mt-auto">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Nenhum produto encontrado.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Custom CSS to apply the color and background -->
+<style>
+    .text-custom {
+        color: #1abc9c; /* Custom color for text */
+    }
+    .border-custom {
+        border-color: #1abc9c !important; /* Custom color for hr */
+    }
+    .btn-custom {
+        color: #fff;
+        background-color: #1abc9c;
+        border-color: #1abc9c;
+    }
+    .btn-custom:hover {
+        background-color: #149b82;
+        border-color: #149b82;
+    }
+    .btn-outline-custom {
+        color: #1abc9c;
+        border-color: #1abc9c;
+    }
+    .btn-outline-custom:hover {
+        background-color: #1abc9c;
+        color: #fff;
+    }
+</style>
+
+{% endblock %}
+
+
+
+
+
+
+<!-- <div class="container">
+    <h2>
+        Produtos
+    </h2>
+
     {% for c in category %}
     <p>
         <a href="{% url 'produtos_categoria' c.name %}">{{ c.name }}</a></li>
     </p>
     {% endfor %}
     <hr>
-    <p>
-        <!-- {{ product }} -->
-    </p>
     {% for p in product %}
     <p>
         <a href="{% url 'produto_single' p.id %}">{{ p.name }}</a>
     </p>
-    {% endfor %}
-</div>
 
-{% endblock %}
+    {% if p.image %}
+    <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.name }}">
+    {% endif %}
+
+    <p>
+        {{ p.description|safe }}
+    </p>
+
+    {% endfor %}
+</div> -->
