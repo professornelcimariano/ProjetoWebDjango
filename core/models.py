@@ -43,8 +43,6 @@ class Product(models.Model):
         verbose_name = "Produto"
         verbose_name_plural = "Produtos"
 
-
-
 class Blog(models.Model):
     blo_title = models.CharField('Título', max_length=100)
     blo_subtitle = models.CharField('Sub-Título', max_length=100, blank=True, null=True)
