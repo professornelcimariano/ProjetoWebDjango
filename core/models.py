@@ -98,3 +98,52 @@ class Client(models.Model):
     class Meta:
         verbose_name = "Cliente"
         verbose_name_plural = "Clientes"
+
+
+class CategoryCar(models.Model):
+    catcar_name = models.CharField('Nome da Categoria do Carro', max_length=100, unique=True) # a chave "unique=True" não permitirá cadastrar 2 valores iguais
+
+    def __str__(self):
+        return self.catcar_name
+
+    class Meta:
+        verbose_name = "Categoria do Carro"
+        verbose_name_plural = "Categorias de Carros"
+
+
+class Carros(models.Model):
+    car_name = models.CharField('Nome', max_length=100)
+    car_modelo = models.CharField('Modelo', max_length=100, blank=True, null=True)
+    #blo_description = models.TextField('Texto do Blog')
+    car_description = HTMLField('Texto do Blog')
+    car_image = models.ImageField('Imagem de Capa', upload_to='images/carro', blank=True, null=True)
+    # image = models.ImageField(upload_to='images/', default='images/default.jpg')
+    slug = models.SlugField(unique=True, blank=True, max_length=255)
+    car_category = models.ForeignKey(CategoryCar, on_delete=models.CASCADE, null=True)
+
+    #Abaixo o slug possui a função de adicionar um sufixo caso já exista com o mesmo nome
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.car_name)
+            slug = base_slug
+            counter = 1
+            while Blog.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+    
+    #mini_image para retornar a imagem em miniatura no painel admin
+    def mini_image(self):
+        if self.car_image:
+            return format_html('<img src="{}" style="height: 100px; width: auto;" />', self.car_image.url)
+        return " "
+    mini_image.short_description = 'Imagem de Capa'
+
+    #A função abaixo é para retornar o name do produto na exibição dentro do painel admin
+    def __str__(self):
+       return self.car_name
+
+    class Meta:
+        verbose_name = "Carro"
+        verbose_name_plural = "Carros"

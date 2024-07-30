@@ -15,22 +15,26 @@ arquivos estáticos (como CSS, JavaScript, imagens, etc.)
         <div class="carousel-item active">
             <img src="{% static 'images/banner_1_1920x800.jpg' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.5);">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h2>Por que estudar Python?</h2>
+                <p>A demanda por desenvolvedores Python só cresce. Aprender Python pode abrir portas para oportunidades
+                    de emprego bem remuneradas e estáveis.</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{% static 'images/banner_2_1920x800.jpg' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.5);">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h2>Potencialidades do Python</h2>
+                <p>Ciência de Dados, Análise de Dados, Aprendizado de Máquina, Inteligência Artificial, Programação Web
+                    etc.</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{% static 'images/banner_3_1920x800.jpg' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.5);">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h2>Foco na Produtividade</h2>
+                <p>Python permite que você escreva menos código para realizar tarefas complexas, aumentando sua
+                    produtividade. Sua abordagem orientada a objetos e funcional também ajuda a organizar o código de
+                    forma eficaz.</p>
             </div>
         </div>
     </div>
@@ -47,56 +51,77 @@ arquivos estáticos (como CSS, JavaScript, imagens, etc.)
 </div>
 
 <div class="container">
-
-
-    <h1>
-        Home - Django 123
+    <h1 style="text-align: center;">
+        Projeto Web com DJANGO
     </h1>
     <!-- <h3>{{ courses }}</h3> -->
     <hr>
+    <section class="conteinerFlex">
+        <div class="itemFlex50">
+            <h3>Elemento de uma lista de Linguagens de Programação</h3>
+            <!-- {{ languages }} -->
+            <p>
+                Um valor da Lista: <b> {{ languages.2 }} </b>
+            </p>
+        </div>
+        <div class="itemFlex50">
 
-    <h3>Linguagens de Programação</h3>
-    <!-- {{ languages }} -->
-    1 valor da Lista: <b> {{ languages.2 }} </b>
-    <hr>
-    <ul>
-        {% for language in languages %}
-        <li>{{ language }}</li>
-        {% endfor %}
-    </ul>
-    <hr>
-    <!-- {{ news }} -->
-    {% for new in news %}
-    <div class="noticia">
-        <h4>{{ new.title }}</h4>
-        <h5>{{ new.subtitle }}</h5>
-        <p>{{ new.text }}</p>
-    </div>
-    {% endfor %}
-    <hr>
+            <ul>
+                {% for language in languages %}
+                <li>{{ language }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</div>
 
-    <img src="{% static 'images/python.jpg' %}" alt="Guitar">
-
-    <hr>
-    <button onclick="f_teste()"> Função JS </button>
-    <hr>
-
-    <div class="container mt-5">
+<!-- {{ news }} -->
+<section style="background-color: #111; padding: 20px;">
+    <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card">
-                    <div class="card-header">
-                        Bem-vindo ao Meu Projeto
-                    </div>
+            <h1 style="color: #fff; text-align: center;">Por que Python?</h1>
+            <hr style="border: #fff 1px solid;">
+            {% for new in news %}
+            <div class="col-sm-6 mb-3 d-flex">
+                <div class="card flex-fill">
                     <div class="card-body">
-                        <h5 class="card-title">Título do Card</h5>
-                        <p class="card-text">Este é um exemplo de card usando classes do Bootstrap no Django.</p>
-                        <a href="#" class="btn btn-primary">Saiba mais</a>
+                        <h2>{{ new.id }}. {{ new.title }}</h2>
+                        <hr>
+                        <p>{{ new.subtitle }}</p>
                     </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+</section>
+
+<div class="container">
+    <section style="margin: 20px 0">
+        <h1 style="text-align: center;">
+            Python pra todos!!!
+        </h1>
+        <hr>
+        <img class="rounded mx-auto d-block" src="{% static 'images/python.jpg' %}" alt="Guitar">
+    </section>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    Bem-vindo ao Meu Projeto
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Título do Card</h5>
+                    <p class="card-text">Este é um exemplo de card usando classes do Bootstrap no Django.</p>
+                    <a href="#" onclick="f_teste()" class="btn btn-dark">Função JS</a>
                 </div>
             </div>
         </div>
     </div>
+
 
 </div>
 {% endblock %}
