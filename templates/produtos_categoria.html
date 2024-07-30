@@ -9,16 +9,16 @@
 <!-- Filtragem por categoria -->
 <ul>
 
-    {% for cat in category %}
-    <li><a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
+    {% for c in category %}
+    <li><a href="{% url 'produtos_categoria' c.name %}">{{ c.name }}</a></li>
     {% endfor %}
 </ul>
 <!-- Listagem de produtos -->
 <ul>
     {% for pro in product %}
-    <li>{{ pro.pro_name }} - {{ pro.pro_category.cat_name }}</li>
-    <p>Preço: R$ {{ pro.pro_price }}</p>
-    <p>Quantidade em Estoque: {{ pro.pro_stock }}</p>
+    <li>{{ pro.name }} - {{ pro.category.name }}</li>
+    <p>Preço: R$ {{ pro.price }}</p>
+    <p>Quantidade em Estoque: {{ pro.stock }}</p>
     {% empty %}
     <li>Nenhum produto encontrado.</li>
     {% endfor %}

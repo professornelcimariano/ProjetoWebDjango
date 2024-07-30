@@ -2,19 +2,19 @@
 {% block content %}
 <div class="container">
     <h2>
-        {{ product.pro_name }}
+        {{ product.name }}
     </h2>
 
     <p>
-        R$ {{ product.pro_price|floatformat:2 }}
+        R$ {{ product.pprice|floatformat:2 }}
     </p>
 
     <p>
-        Estoque: {{ product.pro_stock }}
+        Estoque: {{ product.pstock }}
     </p>
 
     <p>
-        Categoria: {{ product.pro_category }}
+        Categoria: {{ product.category }}
     </p>
 
     <hr>

@@ -62,6 +62,13 @@ def produto_single(request, id):
     product = get_object_or_404(Product, id=id) # get_object_or_404(Products, id=id) -> Usado para recuperar um único objeto com base em um critério específico, como um ID único.
     return render(request, 'produto_single.html', {'product': product})  
 
+def produtos_categoria(request, cat=None):
+    product = Product.objects.all()
+    if cat:
+        category = get_object_or_404(CategoryProduct, name=cat)
+        product = Product.objects.filter(category=category)
+    category = CategoryProduct.objects.all()  # Para exibir todas as categorias no template
+    return render(request, 'produtos_categoria.html', {'product': product, 'category': category})
 
 def blogs(request):
     blog = Blog.objects.all()
@@ -77,13 +84,3 @@ def blog_single(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
     return render(request, 'blog_single.html', {'blog': blog})  
 
-def produtos_categoria(request, cat_name=None):
-    product = Product.objects.all()
-
-    if cat_name:
-        category = get_object_or_404(CategoryProduct, cat_name=cat_name)
-        product = Product.objects.filter(pro_category=category)
-
-    category = CategoryProduct.objects.all()  # Para exibir todas as categorias no template
-
-    return render(request, 'produtos_categoria.html', {'product': product, 'category': category})

@@ -14,8 +14,8 @@
         <a href="{% url 'blog_single' b.slug %}">{{ b }}</a>
     </p>
 
-    {% if b.blo_image %}
-    <img src="{{ b.blo_image.url }}" alt="{{ blog.blo_title }}" width="100">
+    {% if b.image %}
+    <img src="{{ b.image.url }}" alt="{{ blog.title }}" width="100">
     {% endif %}
 
     {% endfor %}

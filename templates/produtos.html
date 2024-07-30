@@ -8,9 +8,9 @@
     </h2>
     <!-- {{ category }} -->
     <!-- Filtragem por categoria -->
-    {% for cat in category %}
+    {% for c in category %}
     <p>
-        <a href="{% url 'produtos_categoria' cat_name=cat.cat_name %}">{{ cat.cat_name }}</a></li>
+        <a href="{% url 'produtos_categoria' c.name %}">{{ c.name }}</a></li>
     </p>
     {% endfor %}
     <hr>
@@ -19,7 +19,7 @@
     </p>
     {% for p in product %}
     <p>
-        <a href="{% url 'produto_single' p.id %}">{{ p.pro_name }}</a>
+        <a href="{% url 'produto_single' p.id %}">{{ p.name }}</a>
     </p>
     {% endfor %}
 </div>
